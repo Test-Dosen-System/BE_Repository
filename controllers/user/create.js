@@ -1,4 +1,4 @@
-const { user } = require("../../models");
+const { User } = require("../../models");
 const bcrypt = require("bcrypt");
 const validator = require("fastest-validator");
 const v = new validator();
@@ -25,7 +25,7 @@ module.exports = {
 
       const { name, email, username, password, roles = "user" } = req.body;
 
-      const findUser = await user.findOne({ where: { email } });
+      const findUser = await User.findOne({ where: { email } });
 
       if (findUser) {
         return res.status(409).json({
@@ -36,7 +36,7 @@ module.exports = {
 
       const hashPassword = await bcrypt.hash(password, 10);
 
-      const created = await user.create({
+      const created = await User.create({
         name,
         email,
         username,

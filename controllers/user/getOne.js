@@ -1,10 +1,10 @@
-const { user } = require("../../models");
+const { User } = require("../../models");
 
 module.exports = {
   getOne: async (req, res, next) => {
     try {
       const { id } = req.params;
-      const exist = await user.findOne({ where: { id } });
+      const exist = await User.findOne({ where: { id } });
 
       if (!exist) {
         return res.status(404).json({

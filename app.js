@@ -1,12 +1,14 @@
 require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
+const cors = require("cors");
 const routes = require("./routes");
 const app = express();
 const { PORT } = process.env;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
+app.use(cors());
 app.use(morgan("dev"));
 app.use(routes);
 
@@ -32,5 +34,5 @@ app.use((err, _req, res) => {
 });
 
 app.listen(PORT, () => {
-  return console.log(`running on https://localhost:${PORT}`);
+  return console.log(`running on http://localhost:${PORT}`);
 });

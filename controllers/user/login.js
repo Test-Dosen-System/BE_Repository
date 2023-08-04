@@ -1,4 +1,4 @@
-const { user } = require("../../models");
+const { User } = require("../../models");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const validator = require("fastest-validator");
@@ -24,7 +24,7 @@ module.exports = {
 
       const { username, password } = req.body;
 
-      const exist = await user.findOne({ where: { username } });
+      const exist = await User.findOne({ where: { username } });
 
       if (!exist) {
         return res.status(404).json({
@@ -33,7 +33,7 @@ module.exports = {
         });
       }
 
-      const comparePassword = bcrypt.compare(password, exist.password);
+      const comparePassword = await bcrypt.compare(password, exist.password);
 
       if (!comparePassword) {
         return res.status(401).json({
