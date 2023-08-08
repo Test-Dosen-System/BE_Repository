@@ -1,0 +1,213 @@
+openapi: 3.0.0
+info:
+  title: Test-Dosen-API
+  description: Test-Dosen-API Documentation
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:1242
+    description: localhost
+
+tags:
+  - User
+  - Soal
+
+paths:
+  /user/register:
+    post:
+      summary: Register New Account
+      description: Register New Account For New User
+      tags:
+        - User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: email
+                username:
+                  type: string
+                password:
+                  type: string
+            examples:
+              example-body:
+                value:
+                  name: John Doe
+                  email: johndoe@gmail.com
+                  username: johndoe123
+                  password: 123johndoe
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+              examples:
+                regist-user:
+                  value:
+                    status: true
+                    message: create user successful
+                    data:
+                      id: 1
+        "400":
+          description: Bad Request (Error Validate)
+        "409":
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+              examples:
+                already-exist:
+                  value:
+                    status: false
+                    message: user already exist
+        "500":
+          description: Internal Server Error
+  /user/login:
+    post:
+      summary: Login
+      description: Login
+      tags:
+        - User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+            examples:
+              example-body:
+                value:
+                  username: johndoe123
+                  password: 123johndoe
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      username:
+                        type: string
+                      roles:
+                        type: string
+                  token:
+                    type: string
+              examples:
+                login-user:
+                  value:
+                    status: true
+                    message: login successful
+                    data:
+                      id: 1
+                      username: johndoe123
+                      roles: USER
+                    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJha3VhZGFsYWhpemF6Iiwicm9sZXMiOiJBRE1JTiIsImlhdCI6MTY5MTE1NTE4Mn0.plzcS5NHgmTLpWTxzM3jT6ukbsNskHLVvU0twt13zis
+        "400":
+          description: Bad Request (Error Validate)
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+              example:
+                wrong-username-or-password:
+                  value:
+                    status: false
+                    message: username or password isn't correct
+        "404":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                  message:
+                    type: string
+              example:
+                username-not-found:
+                  value:
+                    status: false
+                    message: username or password isn't correct
+        "500":
+          description: Internal Server Error
+  /user/update/{id}:
+    put:
+      summary: Update Data User
+      description: Update Data User By id
+      tags:
+        - User
+  /user/update-password:
+    put:
+      summary: Update Password User
+      description: Update Password User By Login
+      tags:
+        - User
+  /user:
+    get:
+      summary: Get Data User
+      description: Get Data All User 
+      tags:
+        - User
+  /user/{id}:
+    get:
+      summary: Get Data User 
+      description: Get Data User By Id
+      tags:
+        - User
+  /user/{id}:
+    delete:
+      summary: Delete User Account
+      description: Delete User Account By Id
+      tags:
+        - User
+
+components:
+  schema: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

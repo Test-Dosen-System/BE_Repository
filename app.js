@@ -2,12 +2,16 @@ require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
+const yaml = require("yamljs");
+const swaggerUI = require("swagger-ui-express");
+const apiDocumentation = yaml.load("./api-docs.yaml");
 const routes = require("./routes");
 const app = express();
 const { PORT } = process.env;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(apiDocumentation));
 app.use(cors());
 app.use(morgan("dev"));
 app.use(routes);

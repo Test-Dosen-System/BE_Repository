@@ -43,7 +43,7 @@ module.exports = {
       },
       jenis_soal: {
         type: Sequelize.ENUM,
-        values: ["Teks", "Gambar", "Audio"],
+        values: ["TEKS", "GAMBAR", "AUDIO"],
         allowNull: false,
       },
       user_id: {
