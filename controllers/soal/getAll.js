@@ -7,6 +7,7 @@ module.exports = {
         attributes: [
           "id",
           "soal",
+          "file",
           "jawaban_a",
           "jawaban_b",
           "jawaban_c",

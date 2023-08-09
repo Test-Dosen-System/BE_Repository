@@ -1,0 +1,358 @@
+{
+	"info": {
+		"_postman_id": "f978c4c3-cea3-40e3-8991-716d029f0b9e",
+		"name": "Test-Dosen App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21057424"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Izaz\",\r\n    \"email\": \"hello@gmail.com\",\r\n    \"username\": \"akuadalahizaz\",\r\n    \"password\": \"admin123\",\r\n    \"roles\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1242/user/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1242",
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"akuadalahizaz\",\r\n    \"password\": \"admin123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1242/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1242",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Data",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Zazi\",\r\n    \"email\": \"zazi@gmail.com\",\r\n    \"username\": \"akuadalahizaz\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1242/user/update/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1242",
+							"path": [
+								"user",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1242/user/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1242",
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1242/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1242",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJha3VhZGFsYWhpemF6Iiwicm9sZXMiOiJhZG1pbiIsImlhdCI6MTY5MTA4Mzk5MX0.PfABee_Ap545c7mE9pkDmG5qvvMKLE9XNCtUwxYTexI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJha3VhZGFsYWhpemF6Iiwicm9sZXMiOiJhZG1pbiIsImlhdCI6MTY5MTA4Mzk5MX0.PfABee_Ap545c7mE9pkDmG5qvvMKLE9XNCtUwxYTexI",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\": \"123admin\",\r\n    \"newPassword\": \"admin123\",\r\n    \"confirmNewPassword\": \"admin123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1242/user/update-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1242",
+							"path": [
+								"user",
+								"update-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Soal",
+			"item": [
+				{
+					"name": "Create Soal File",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJha3VhZGFsYWhpemF6Iiwicm9sZXMiOiJhZG1pbiIsImlhdCI6MTY5MTExMTMwMH0.xxXODeyVTOHIkmj78BoNUpEaqse51cgMrSZ-owR6yNk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"soal\":\"Siapa nama ayangku?\",\r\n    \"jawaban_a\": \"Yorikoo\",\r\n    \"jawaban_b\": \"Jisoo\",\r\n    \"jawaban_c\": \"Sakura\",\r\n    \"jawaban_d\": \"Milea\",\r\n    \"jawaban_e\": \"Gak Tahu\",\r\n    \"jawaban_benar\": \"Gak Tahu\",\r\n    \"kategori_soal\": \"Teks\",\r\n    \"jenis_soal\": \"TKDA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1242/soal/create-soal",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1242",
+							"path": [
+								"soal",
+								"create-soal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1242/soal",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1242",
+							"path": [
+								"soal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1242/soal/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1242",
+							"path": [
+								"soal",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Soal",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJha3VhZGFsYWhpemF6Iiwicm9sZXMiOiJhZG1pbiIsImlhdCI6MTY5MTExMTMwMH0.xxXODeyVTOHIkmj78BoNUpEaqse51cgMrSZ-owR6yNk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"soal\":\"Siapa nama ayangku?\",\r\n    \"jawaban_a\": \"Yorikoo\",\r\n    \"jawaban_b\": \"Jisoo\",\r\n    \"jawaban_c\": \"Sakura\",\r\n    \"jawaban_d\": \"Milea\",\r\n    \"jawaban_e\": \"Gak Tahu\",\r\n    \"jawaban_benar\": \"Gak Tahu\",\r\n    \"kategori_soal\": \"Teks\",\r\n    \"jenis_soal\": \"TOEP\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1242/soal/update/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1242",
+							"path": [
+								"soal",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Create Soal Teks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJha3VhZGFsYWhpemF6Iiwicm9sZXMiOiJBRE1JTiIsImlhdCI6MTY5MTUwMDExM30.bYJCW2ivEy-bowXsuTxT0Wver1PmlnQ9crUl--R_grs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"soal\":\"Ayangku siapa namanyaaaa?\",\r\n\"jawaban_a\":\"Yorikoo\",\r\n\"jawaban_b\":\"Jisoo\",\r\n\"jawaban_c\":\"Sakura\",\r\n\"jawaban_d\":\"Milea\",\r\n\"jawaban_e\":\"Gak Tahu\",\r\n\"jawaban_benar\":\"Gak Tahu\",\r\n\"kategori_soal\":\"TKDA\",\r\n\"jenis_soal\":\"TEKS\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1242/soal/create-soal-teks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1242",
+							"path": [
+								"soal",
+								"create-soal-teks"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

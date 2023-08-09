@@ -35,8 +35,7 @@ const upload = multer({
     try {
       if (
         file.mimetype == "image/png" ||
-        file.mimetype == "image/jpg" ||
-        file.mimetype == "image/jpg" ||
+        file.mimetype == "image/jpg" || ||
         file.mimetype == "image/jpeg" ||
         file.mimetype == "audio/mpeg"
       ) {

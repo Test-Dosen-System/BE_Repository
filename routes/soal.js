@@ -1,14 +1,21 @@
 const express = require("express");
 const router = express.Router();
 const csoal = require("../controllers/soal");
-const upload = require("../middleware/storage");
+const uploadImage = require("../middleware/storageImage");
+const uploadAudio = require("../middleware/storageAudio");
 const mid = require("../middleware/restrict");
 
 router.post(
-  "/create-soal-file",
+  "/create-soal-gambar",
   mid.mustAdmin,
-  upload.single("fileSoal"),
-  csoal.create.createSoalFile
+  uploadImage.single("fileSoal"),
+  csoal.create.createSoalGambar
+);
+router.post(
+  "/create-soal-audio",
+  mid.mustAdmin,
+  uploadAudio.single("fileSoal"),
+  csoal.create.createSoalAudio
 );
 router.post("/create-soal-teks", mid.mustAdmin, csoal.create.createSoalTeks);
 router.put("/update/:id", mid.mustAdmin, csoal.update.updateSoal);
