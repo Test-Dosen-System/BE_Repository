@@ -52,7 +52,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       files: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
       },
       user_id: {
         type: DataTypes.INTEGER,

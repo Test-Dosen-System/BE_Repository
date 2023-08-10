@@ -19,7 +19,7 @@ module.exports = {
           "user_id",
         ],
       };
-      const exist = await Soal.findAll(sqlOptions);
+      const exist = await Soal.findAll();
 
       if (!exist) {
         return res.status(404).json({

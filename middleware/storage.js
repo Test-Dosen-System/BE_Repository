@@ -3,19 +3,7 @@ const path = require("path");
 
 const storage = multer.diskStorage({
   destination: (_req, file, callback) => {
-    let folder = "";
-
-    if (
-      file.mimetype === "image/png" ||
-      file.mimetype === "image/jpg" ||
-      file.mimetype === "image/jpeg"
-    ) {
-      folder = "public/images";
-    }
-
-    if (file.mimetype === "audio/mpeg") {
-      folder = "public/audio";
-    }
+    let folder = "public/files";
 
     callback(null, folder);
   },
@@ -31,25 +19,25 @@ const upload = multer({
   storage: storage,
 
   // add file filter
-  fileFilter: (req, file, callback, next) => {
-    try {
-      if (
-        file.mimetype == "image/png" ||
-        file.mimetype == "image/jpg" || ||
-        file.mimetype == "image/jpeg" ||
-        file.mimetype == "audio/mpeg"
-      ) {
-        callback(null, true);
-      } else {
-        const err = new Error(
-          "only png, jpg, jpeg and mp3 are allowed to upload"
-        );
-        callback(err, false);
-      }
-    } catch (err) {
-      next(err);
-    }
-  },
+  // fileFilter: (req, file, callback, next) => {
+  //   try {
+  //     if (
+  //       file.mimetype == "image/png" ||
+  //       file.mimetype == "image/jpg" || ||
+  //       file.mimetype == "image/jpeg" ||
+  //       file.mimetype == "audio/mpeg"
+  //     ) {
+  //       callback(null, true);
+  //     } else {
+  //       const err = new Error(
+  //         "only png, jpg, jpeg and mp3 are allowed to upload"
+  //       );
+  //       callback(err, false);
+  //     }
+  //   } catch (err) {
+  //     next(err);
+  //   }
+  // },
 
   //error handling
   onError: (err, next) => {
