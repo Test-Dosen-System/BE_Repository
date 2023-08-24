@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const user = require("./user");
-const soal = require("./soal");
+const soalToep = require("./soalTOEP");
 
 router.use("/user", user);
-router.use("/soal", soal);
+router.use("/soal-toep", soalToep);
 
 module.exports = router;

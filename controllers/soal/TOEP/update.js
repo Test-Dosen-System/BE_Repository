@@ -1,4 +1,4 @@
-const { Soal } = require("../../models");
+const { Soal } = require("../../../models");
 const jwt = require("jsonwebtoken");
 const validator = require("fastest-validator");
 const v = new validator();
@@ -17,7 +17,7 @@ module.exports = {
         jawaban_benar: "string",
         kategori_soal: {
           type: "enum",
-          values: ["Teks", "Gambar", "Audio"],
+          values: ["TEKS", "GAMBAR", "AUDIO"],
         },
         jenis_soal: {
           type: "enum",
@@ -45,7 +45,7 @@ module.exports = {
         jawaban_d,
         jawaban_e,
         jawaban_benar,
-        kategori_soal,
+        kategori_soal = "TOEP",
         jenis_soal,
         user_id = verify.id,
       } = req.body;

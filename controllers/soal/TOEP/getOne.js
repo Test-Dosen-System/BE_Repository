@@ -1,4 +1,4 @@
-const { Soal } = require("../../models");
+const { Soal } = require("../../../models");
 
 module.exports = {
   getOne: async (req, res, next) => {

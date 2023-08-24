@@ -28,12 +28,12 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      jawaban_e: {
-        type: Sequelize.STRING,
-        allowNull: true,
-      },
       jawaban_benar: {
         type: Sequelize.STRING,
+        allowNull: false,
+      },
+      skor: {
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
       kategori_soal: {
@@ -45,6 +45,18 @@ module.exports = {
         type: Sequelize.ENUM,
         values: ["TEKS", "GAMBAR", "AUDIO"],
         allowNull: false,
+      },
+      part_soal: {
+        type: Sequelize.ENUM,
+        values: ["RESPONSES", "CONVERSATION", "MINI TALKS", "READING SECTION"],
+        allowNull: false,
+      },
+      durasi: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      files: {
+        type: Sequelize.TEXT,
       },
       user_id: {
         type: Sequelize.INTEGER,

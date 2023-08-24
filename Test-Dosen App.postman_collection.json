@@ -195,7 +195,92 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJha3VhZGFsYWhpemF6Iiwicm9sZXMiOiJhZG1pbiIsImlhdCI6MTY5MTExMTMwMH0.xxXODeyVTOHIkmj78BoNUpEaqse51cgMrSZ-owR6yNk",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJha3VhZGFsYWhpemF6Iiwicm9sZXMiOiJBRE1JTiIsImlhdCI6MTY5MTU3MjY0N30.5D-mFXQp0tHW7zExYawRYsUotRr6BMgz3_U55DjAHuw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "soal",
+									"value": "Ayangku siapa namanyawwae?",
+									"type": "text"
+								},
+								{
+									"key": "fileSoal",
+									"type": "file",
+									"src": "/C:/Users/Jaz/Downloads/Music/Benson Boone   In the Stars Official Lyric Video.mp3"
+								},
+								{
+									"key": "jawaban_a",
+									"value": "Yorikoo",
+									"type": "text"
+								},
+								{
+									"key": "jawaban_b",
+									"value": "Jisoo",
+									"type": "text"
+								},
+								{
+									"key": "jawaban_c",
+									"value": "Sakura",
+									"type": "text"
+								},
+								{
+									"key": "jawaban_d",
+									"value": "Milea",
+									"type": "text"
+								},
+								{
+									"key": "jawaban_e",
+									"value": "Gak Tahu",
+									"type": "text"
+								},
+								{
+									"key": "jawaban_benar",
+									"value": "Gak Tahu",
+									"type": "text"
+								},
+								{
+									"key": "kategori_soal",
+									"value": "TKDA",
+									"type": "text"
+								},
+								{
+									"key": "jenis_soal",
+									"value": "AUDIO",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:1242/soal/create-soal-audio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1242",
+							"path": [
+								"soal",
+								"create-soal-audio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Soal Teks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJqb2huZG9lIiwicm9sZXMiOiJBRE1JTiIsImlhdCI6MTY5Mjg3OTQ4OX0.8pA_m4OhC_mMcPPRNqgu0K4L0oStcAaNETp0J08XhO8",
 									"type": "string"
 								}
 							]
@@ -204,7 +289,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"soal\":\"Siapa nama ayangku?\",\r\n    \"jawaban_a\": \"Yorikoo\",\r\n    \"jawaban_b\": \"Jisoo\",\r\n    \"jawaban_c\": \"Sakura\",\r\n    \"jawaban_d\": \"Milea\",\r\n    \"jawaban_e\": \"Gak Tahu\",\r\n    \"jawaban_benar\": \"Gak Tahu\",\r\n    \"kategori_soal\": \"Teks\",\r\n    \"jenis_soal\": \"TKDA\"\r\n}",
+							"raw": "{\r\n    \"soal\":\"Anna : Do you want some chocolate? Aida : .... \",\r\n    \"jawaban_a\":\"I know\",\r\n    \"jawaban_b\":\"I'm okay\",\r\n    \"jawaban_c\":\"I am happy\",\r\n    \"jawaban_d\":\"Yes, please\",\r\n    \"jawaban_benar\":\"d\",\r\n    \"skor\": 1,\r\n    \"jenis_soal\":\"TEKS\",\r\n    \"durasi\":10,\r\n    \"part_soal\": \"CONVERSATION\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -212,15 +297,15 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:1242/soal/create-soal",
+							"raw": "http://localhost:1242/soal-toep/create-soal-teks",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "1242",
 							"path": [
-								"soal",
-								"create-soal"
+								"soal-toep",
+								"create-soal-teks"
 							]
 						}
 					},
@@ -228,18 +313,35 @@
 				},
 				{
 					"name": "Get All",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJha3VhZGFsYWhpemF6Iiwicm9sZXMiOiJBRE1JTiIsImlhdCI6MTY5MTE1NTE4Mn0.plzcS5NHgmTLpWTxzM3jT6ukbsNskHLVvU0twt13zis",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://localhost:1242/soal",
+							"raw": "http://localhost:1242/soal-toep",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "1242",
 							"path": [
-								"soal"
+								"soal-toep"
 							]
 						}
 					},
@@ -248,10 +350,20 @@
 				{
 					"name": "Get One",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJha3VhZGFsYWhpemF6Iiwicm9sZXMiOiJBRE1JTiIsImlhdCI6MTY5MTY1MzQwMn0.rh-M2SenMd7WgacGSHAXgC6pdHlVVHzLlbg9hTYF0cY",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:1242/soal/1",
+							"raw": "http://localhost:1242/soal/22",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -259,7 +371,7 @@
 							"port": "1242",
 							"path": [
 								"soal",
-								"1"
+								"22"
 							]
 						}
 					},
@@ -308,37 +420,10 @@
 				{
 					"name": "Delete",
 					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				},
-				{
-					"name": "Create Soal Teks",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJha3VhZGFsYWhpemF6Iiwicm9sZXMiOiJBRE1JTiIsImlhdCI6MTY5MTUwMDExM30.bYJCW2ivEy-bowXsuTxT0Wver1PmlnQ9crUl--R_grs",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
+						"method": "DELETE",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"soal\":\"Ayangku siapa namanyaaaa?\",\r\n\"jawaban_a\":\"Yorikoo\",\r\n\"jawaban_b\":\"Jisoo\",\r\n\"jawaban_c\":\"Sakura\",\r\n\"jawaban_d\":\"Milea\",\r\n\"jawaban_e\":\"Gak Tahu\",\r\n\"jawaban_benar\":\"Gak Tahu\",\r\n\"kategori_soal\":\"TKDA\",\r\n\"jenis_soal\":\"TEKS\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "http://localhost:1242/soal/create-soal-teks",
+							"raw": "http://localhost:1242/soal/delete/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -346,7 +431,58 @@
 							"port": "1242",
 							"path": [
 								"soal",
-								"create-soal-teks"
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Import File",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Jaz/Downloads/Format Import Soal dan Jawaban.xlsx"
+								},
+								{
+									"key": "startCell",
+									"value": "B2",
+									"type": "text"
+								},
+								{
+									"key": "endCell",
+									"value": "G6",
+									"type": "text"
+								},
+								{
+									"key": "kategori_soal",
+									"value": "TOEP",
+									"type": "text"
+								},
+								{
+									"key": "noSheet",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:1242/soal/import-file",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1242",
+							"path": [
+								"soal",
+								"import-file"
 							]
 						}
 					},

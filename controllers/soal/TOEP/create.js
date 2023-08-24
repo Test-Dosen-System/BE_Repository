@@ -1,4 +1,4 @@
-const { Soal } = require("../../models");
+const { Soal } = require("../../../models");
 const validator = require("fastest-validator");
 const v = new validator();
 const jwt = require("jsonwebtoken");
@@ -15,12 +15,7 @@ module.exports = {
         jawaban_b: "string",
         jawaban_c: "string",
         jawaban_d: "string",
-        jawaban_e: "string|optional",
         jawaban_benar: "string",
-        kategori_soal: {
-          type: "enum",
-          values: ["TOEP", "TKDA"],
-        },
         jenis_soal: {
           type: "enum",
           values: ["TEKS", "GAMBAR", "AUDIO"],
@@ -48,7 +43,7 @@ module.exports = {
         jawaban_d,
         jawaban_e,
         jawaban_benar,
-        kategori_soal,
+        kategori_soal = "TOEP",
         jenis_soal,
         user_id = verify.id,
       } = req.body;
@@ -70,6 +65,8 @@ module.exports = {
         "host"
       )}/public/images/${fileName}`;
 
+      const rightAnswer = `jawaban_${jawaban_benar}`;
+
       const created = await Soal.create({
         soal,
         files: resultFileName,
@@ -78,7 +75,7 @@ module.exports = {
         jawaban_c,
         jawaban_d,
         jawaban_e,
-        jawaban_benar,
+        jawaban_benar: rightAnswer,
         kategori_soal,
         jenis_soal,
         user_id,
@@ -188,12 +185,7 @@ module.exports = {
         jawaban_b: "string",
         jawaban_c: "string",
         jawaban_d: "string",
-        jawaban_e: "string|optional",
         jawaban_benar: "string",
-        kategori_soal: {
-          type: "enum",
-          values: ["TOEP", "TKDA"],
-        },
         jenis_soal: {
           type: "enum",
           values: ["TEKS", "GAMBAR", "AUDIO"],
@@ -221,8 +213,11 @@ module.exports = {
         jawaban_d,
         jawaban_e,
         jawaban_benar,
-        kategori_soal,
+        skor,
+        kategori_soal = "TOEP",
         jenis_soal,
+        part_soal,
+        durasi,
         user_id = verify.id,
       } = req.body;
 
@@ -235,6 +230,8 @@ module.exports = {
         });
       }
 
+      const rightAnswer = `jawaban_${jawaban_benar}`;
+
       const created = await Soal.create({
         soal,
         jawaban_a,
@@ -242,9 +239,12 @@ module.exports = {
         jawaban_c,
         jawaban_d,
         jawaban_e,
-        jawaban_benar,
+        jawaban_benar: rightAnswer,
+        skor,
         kategori_soal,
         jenis_soal,
+        durasi,
+        part_soal,
         user_id,
       });
 

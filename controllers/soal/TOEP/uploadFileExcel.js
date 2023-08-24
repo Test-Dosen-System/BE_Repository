@@ -1,4 +1,4 @@
-const { Soal } = require("../../models");
+const { Soal } = require("../../../models");
 const xlsx = require("xlsx");
 
 module.exports = {
