@@ -15,6 +15,7 @@ module.exports = {
         jawaban_d: "string",
         jawaban_e: "string|optional",
         jawaban_benar: "string",
+        skor: "integer",
         kategori_soal: {
           type: "enum",
           values: ["TEKS", "GAMBAR", "AUDIO"],
@@ -23,6 +24,16 @@ module.exports = {
           type: "enum",
           values: ["TOEP", "TKDA"],
         },
+        part_soal: {
+          type: "enum",
+          values: [
+            "RESPONSES",
+            "CONVERSATION",
+            "MINI TALKS",
+            "READING SECTION",
+          ],
+        },
+        durasi: "integer",
       };
 
       const validate = v.validate(req.body, schema);
@@ -45,8 +56,11 @@ module.exports = {
         jawaban_d,
         jawaban_e,
         jawaban_benar,
+        skor,
         kategori_soal = "TOEP",
         jenis_soal,
+        part_soal,
+        durasi,
         user_id = verify.id,
       } = req.body;
 
@@ -68,8 +82,11 @@ module.exports = {
           jawaban_d,
           jawaban_e,
           jawaban_benar,
+          skor,
           kategori_soal,
           jenis_soal,
+          part_soal,
+          durasi,
           user_id,
         },
         { where: { id } }

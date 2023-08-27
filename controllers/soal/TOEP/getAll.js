@@ -33,7 +33,11 @@ module.exports = {
           jawaban_c: item.jawaban_c,
           jawaban_d: item.jawaban_d,
           jawaban_benar: jawaban_benar_option,
-          // ... (data lainnya)
+          skor: item.skor,
+          kategori_soal: item.kategori_soal,
+          jenis_soal: item.jenis_soal,
+          part_soal: item.part_soal,
+          durasi: item.durasi,
         };
       });
 

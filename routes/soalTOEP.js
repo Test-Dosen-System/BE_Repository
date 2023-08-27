@@ -7,12 +7,6 @@ const uploadAudio = require("../middleware/storageAudio");
 const mid = require("../middleware/restrict");
 
 router.post(
-  "/create-soal-gambar",
-  mid.mustAdmin,
-  uploadImage.single("fileSoal"),
-  csoal.create.createSoalGambar
-);
-router.post(
   "/create-soal-audio",
   mid.mustAdmin,
   uploadAudio.single("fileSoal"),

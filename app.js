@@ -1,4 +1,5 @@
 require("dotenv").config();
+const path = require("path");
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
@@ -19,6 +20,9 @@ app.use(routes);
 app.get("/", (req, res) => {
   return res.send("Welcome to our API");
 });
+
+// handle route statis
+app.use("/public", express.static(path.join(__dirname, "public")));
 
 // Error handling 400
 app.use((_req, res) => {

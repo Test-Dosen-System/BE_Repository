@@ -8,13 +8,25 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Soal.belongsTo(models.Groupsoal, {
+        foreignKey: "id_soal_panjang",
+        as: "soalpanjang",
+      });
+
+      Soal.belongsTo(models.User, {
+        foreignKey: "user_id",
+        as: "user",
+      });
     }
   }
   Soal.init(
     {
       soal: {
         type: DataTypes.STRING,
+        allowNull: true,
+      },
+      id_soal_panjang: {
+        type: DataTypes.INTEGER,
         allowNull: true,
       },
       jawaban_a: {
@@ -53,7 +65,19 @@ module.exports = (sequelize, DataTypes) => {
       },
       part_soal: {
         type: DataTypes.ENUM,
-        values: ["RESPONSES", "CONVERSATION", "MINI TALKS", "READING SECTION"],
+        values: [
+          "RESPONSES",
+          "CONVERSATION",
+          "MINI TALKS",
+          "READING SECTION",
+          "DUMMY ANALOGY",
+          "DUMMY LOGICAL REASONING",
+          "DUMMY ANALITICAL REASONING",
+          "DUMMY ARITMETIC",
+          "DUMMY NUMBER SERIES",
+          "WORD PORBLEM",
+          "FIGUR ANALYSIS AND SYNTHESIS",
+        ],
         allowNull: false,
       },
       durasi: {

@@ -12,6 +12,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      id_soal_panjang: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
       jawaban_a: {
         type: Sequelize.STRING,
         allowNull: false,
