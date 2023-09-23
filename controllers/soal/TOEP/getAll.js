@@ -3,7 +3,8 @@ const { Soal } = require("../../../models");
 module.exports = {
   getAll: async (req, res, next) => {
     try {
-      const data = await Soal.findAll();
+      const { kategori_soal = "TOEP" } = req.query;
+      const data = await Soal.findAll({ where: { kategori_soal } });
 
       if (!data) {
         return res.status(404).json({

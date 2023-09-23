@@ -8,10 +8,10 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Groupsoal.hasMany(models.Soal, {
-        foreignKey: "id_soal_panjang",
-        as: "soalpanjang",
-      });
+      // Groupsoal.hasMany(models.Soal, {
+      //   foreignKey: "id_soal_panjang",
+      //   as: "soalpanjang",
+      // });
     }
   }
   Groupsoal.init(

@@ -18,5 +18,9 @@ router.post(
   ]),
   csoal.create.createSoalGambar
 );
+router.get("/", csoal.getAll.getAll);
+router.get("/:id", csoal.getOne.getOne);
+router.delete("/delete/:id", mid.mustAdmin, csoal.destroy.delete);
+router.put("/update/:id", mid.mustAdmin, csoal.update.updateSoal);
 
 module.exports = router;

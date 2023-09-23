@@ -35,7 +35,7 @@ module.exports = {
       if (validate.length) {
         return res.status(400).json({
           status: false,
-          message: validate,
+          message: "validasi salah!",
         });
       }
 
@@ -119,7 +119,7 @@ module.exports = {
       if (validate.length) {
         return res.status(400).json({
           status: false,
-          message: validate,
+          message: "validasi salah!",
         });
       }
 
@@ -143,15 +143,6 @@ module.exports = {
       const fileJawabanB = req.files["fileJawabanB"];
       const fileJawabanC = req.files["fileJawabanC"];
       const fileJawabanD = req.files["fileJawabanD"];
-
-      // const findSoal = await Soal.findOne({ where: { soal } });
-
-      // if (findSoal) {
-      //   return res.status(409).json({
-      //     status: false,
-      //     message: "soal already exist",
-      //   });
-      // }
 
       const fileName1 = fileSoal[0].path.split("\\").pop().split("/").pop();
       const resultFileName1 = `http://${req.get(

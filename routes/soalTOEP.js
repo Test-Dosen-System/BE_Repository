@@ -14,7 +14,7 @@ router.post(
 );
 router.post("/create-soal-teks", mid.mustAdmin, csoal.create.createSoalTeks);
 router.put("/update/:id", mid.mustAdmin, csoal.update.updateSoal);
-router.get("/:id", mid.mustAdmin, csoal.getOne.getOne);
+router.get("/:id", csoal.getOne.getOne);
 router.get("/", csoal.getAll.getAll);
 router.delete("/delete/:id", mid.mustAdmin, csoal.destroy.delete);
 router.post(

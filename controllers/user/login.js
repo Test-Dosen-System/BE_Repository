@@ -18,7 +18,7 @@ module.exports = {
       if (validate.length) {
         return res.status(400).json({
           status: false,
-          message: validate,
+          message: "password harus 6 karakter",
         });
       }
 
