@@ -49,9 +49,12 @@ module.exports = {
         jawaban_d,
         jawaban_e,
         jawaban_benar,
+        skor,
         kategori_soal = "TOEP",
         jenis_soal = "AUDIO",
         user_id = verify.id,
+        part_soal,
+        durasi,
       } = req.body;
 
       const fileSoal = req.file;
@@ -81,8 +84,11 @@ module.exports = {
         jawaban_d,
         jawaban_e,
         jawaban_benar: rightAnswer,
+        skor,
         kategori_soal,
         jenis_soal,
+        part_soal,
+        durasi,
         user_id,
       });
 
@@ -146,6 +152,8 @@ module.exports = {
         user_id = verify.id,
       } = req.body;
 
+      const fileSoal = req.file;
+
       const findSoal = await Soal.findOne({ where: { soal } });
 
       if (findSoal) {
@@ -155,10 +163,16 @@ module.exports = {
         });
       }
 
+      const fileName = fileSoal.path.split("\\").pop().split("/").pop();
+      const resultFileName = `http://${req.get(
+        "host"
+      )}/public/images/${fileName}`;
+
       const rightAnswer = `jawaban_${jawaban_benar}`;
 
       const created = await Soal.create({
         soal,
+        files: resultFileName,
         jawaban_a,
         jawaban_b,
         jawaban_c,

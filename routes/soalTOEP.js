@@ -12,7 +12,12 @@ router.post(
   uploadAudio.single("fileSoal"),
   csoal.create.createSoalAudio
 );
-router.post("/create-soal-teks", mid.mustAdmin, csoal.create.createSoalTeks);
+router.post(
+  "/create-soal-teks",
+  uploadAudio.single("fileSoal"),
+  mid.mustAdmin,
+  csoal.create.createSoalTeks
+);
 router.put("/update/:id", mid.mustAdmin, csoal.update.updateSoal);
 router.get("/:id", csoal.getOne.getOne);
 router.get("/", csoal.getAll.getAll);
