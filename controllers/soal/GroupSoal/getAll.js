@@ -1,21 +1,20 @@
 const { Groupsoal } = require("../../../models");
 
 module.exports = {
-  getOne: async (req, res, next) => {
+  getAll: async (req, res, next) => {
     try {
-      const { id } = req.params;
-      const data = await Groupsoal.findOne({ where: { id } });
+      const data = await Groupsoal.findAll();
 
       if (!data) {
         return res.status(404).json({
           status: false,
-          message: "data not found",
+          message: "Data not found",
         });
       }
 
       return res.status(200).json({
         status: true,
-        message: "get data successful",
+        message: "Get data successful",
         data: {
           soal_panjang: data.soal_panjang,
           files: data.files,

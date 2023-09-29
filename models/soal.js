@@ -8,10 +8,10 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // Soal.belongsTo(models.Groupsoal, {
-      //   foreignKey: "id_soal_panjang",
-      //   as: "soalpanjang",
-      // });
+      Soal.belongsTo(models.Groupsoal, {
+        foreignKey: "id_soal_panjang",
+        as: "soalpanjang",
+      });
 
       Soal.belongsTo(models.User, {
         foreignKey: "user_id",
@@ -25,10 +25,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: true,
       },
-      // id_soal_panjang: {
-      //   type: DataTypes.INTEGER,
-      //   allowNull: true,
-      // },
+      id_soal_panjang: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+      },
       jawaban_a: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -70,13 +70,14 @@ module.exports = (sequelize, DataTypes) => {
           "CONVERSATION",
           "MINI TALKS",
           "READING SECTION",
-          "DUMMY ANALOGY",
-          "DUMMY LOGICAL REASONING",
-          "DUMMY ANALITICAL REASONING",
-          "DUMMY ARITMETIC",
-          "DUMMY NUMBER SERIES",
+          "ANALOGY",
+          "LOGICAL REASONING",
+          "ANALITICAL REASONING",
+          "ARITMETIC",
+          "NUMBER SERIES",
           "WORD PORBLEM",
           "FIGUR ANALYSIS AND SYNTHESIS",
+          "SPATIAL REASONING",
         ],
         allowNull: false,
       },

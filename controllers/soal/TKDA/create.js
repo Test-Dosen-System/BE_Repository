@@ -7,38 +7,6 @@ const { JWT_SECRET } = process.env;
 module.exports = {
   createSoalTeks: async (req, res, next) => {
     try {
-      const schema = {
-        soal: "string",
-        jawaban_a: "string",
-        jawaban_b: "string",
-        jawaban_c: "string",
-        jawaban_d: "string",
-        jawaban_benar: "string",
-        skor: "integer",
-        part_soal: {
-          type: "enum",
-          values: [
-            "DUMMY ANALOGY",
-            "DUMMY LOGICAL REASONING",
-            "DUMMY ANALITICAL REASONING",
-            "DUMMY ARITMETIC",
-            "DUMMY NUMBER SERIES",
-            "WORD PORBLEM",
-            "FIGUR ANALYSIS AND SYNTHESIS",
-          ],
-        },
-        durasi: "integer",
-      };
-
-      const validate = v.validate(req.body, schema);
-
-      if (validate.length) {
-        return res.status(400).json({
-          status: false,
-          message: "validasi salah!",
-        });
-      }
-
       const token = req.headers.authorization.split("Bearer ")[1];
 
       const verify = jwt.verify(token, JWT_SECRET);
@@ -59,13 +27,6 @@ module.exports = {
       } = req.body;
 
       const findSoal = await Soal.findOne({ where: { soal } });
-
-      if (findSoal) {
-        return res.status(409).json({
-          status: false,
-          message: "soal already exist",
-        });
-      }
 
       const rightAnswer = `jawaban_${jawaban_benar}`;
 

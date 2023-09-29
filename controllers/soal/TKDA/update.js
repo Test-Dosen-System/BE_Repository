@@ -19,10 +19,14 @@ module.exports = {
         part_soal: {
           type: "enum",
           values: [
-            "RESPONSES",
-            "CONVERSATION",
-            "MINI TALKS",
-            "READING SECTION",
+            "ANALOGY",
+            "LOGICAL REASONING",
+            "ANALITICAL REASONING",
+            "ARITMETIC",
+            "NUMBER SERIES",
+            "WORD PORBLEM",
+            "FIGUR ANALYSIS AND SYNTHESIS",
+            "SPATIAL REASONING",
           ],
         },
         durasi: "integer",

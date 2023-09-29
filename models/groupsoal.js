@@ -8,15 +8,15 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // Groupsoal.hasMany(models.Soal, {
-      //   foreignKey: "id_soal_panjang",
-      //   as: "soalpanjang",
-      // });
+      Groupsoal.hasMany(models.Soal, {
+        foreignKey: "id_soal_panjang",
+        as: "soalpanjang",
+      });
     }
   }
   Groupsoal.init(
     {
-      soal_panjang: DataTypes.STRING,
+      soal_panjang: DataTypes.TEXT,
       files: DataTypes.STRING,
       files2: DataTypes.STRING,
     },
