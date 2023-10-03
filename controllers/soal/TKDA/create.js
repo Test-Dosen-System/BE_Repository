@@ -56,33 +56,33 @@ module.exports = {
   },
   createSoalGambar: async (req, res, next) => {
     try {
-      const schema = {
-        soal: "string|optional",
-        jawaban_benar: "string",
-        skor: { type: "number", convert: true },
-        part_soal: {
-          type: "enum",
-          values: [
-            "DUMMY ANALOGY",
-            "DUMMY LOGICAL REASONING",
-            "DUMMY ANALITICAL REASONING",
-            "DUMMY ARITMETIC",
-            "DUMMY NUMBER SERIES",
-            "WORD PORBLEM",
-            "FIGUR ANALYSIS AND SYNTHESIS",
-          ],
-        },
-        durasi: { type: "number", convert: true },
-      };
+      // const schema = {
+      //   soal: "string|optional",
+      //   jawaban_benar: "string",
+      //   skor: { type: "number", convert: true },
+      //   part_soal: {
+      //     type: "enum",
+      //     values: [
+      //       "ANALOGY",
+      //       "LOGICAL REASONING",
+      //       "ANALITICAL REASONING",
+      //       "DUMMY ARITMETIC",
+      //       "DUMMY NUMBER SERIES",
+      //       "WORD PORBLEM",
+      //       "FIGUR ANALYSIS AND SYNTHESIS",
+      //     ],
+      //   },
+      //   durasi: { type: "number", convert: true },
+      // };
 
-      const validate = v.validate(req.body, schema);
+      // const validate = v.validate(req.body, schema);
 
-      if (validate.length) {
-        return res.status(400).json({
-          status: false,
-          message: "validasi salah!",
-        });
-      }
+      // if (validate.length) {
+      //   return res.status(400).json({
+      //     status: false,
+      //     message: "validasi salah!",
+      //   });
+      // }
 
       const token = req.headers.authorization.split("Bearer ")[1];
 

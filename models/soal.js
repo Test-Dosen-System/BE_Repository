@@ -68,7 +68,7 @@ module.exports = (sequelize, DataTypes) => {
         values: [
           "RESPONSES",
           "CONVERSATION",
-          "LONG CONVERSATION",
+          "LONGER CONVERSATION",
           "MINI TALKS",
           "READING SECTION",
           "ANALOGY",

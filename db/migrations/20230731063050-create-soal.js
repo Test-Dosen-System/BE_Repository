@@ -55,7 +55,7 @@ module.exports = {
         values: [
           "RESPONSES",
           "CONVERSATION",
-          "LONG CONVERSATION",
+          "LONGER CONVERSATION",
           "MINI TALKS",
           "READING SECTION",
           "ANALOGY",
