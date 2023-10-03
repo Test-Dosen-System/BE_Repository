@@ -52,7 +52,21 @@ module.exports = {
       },
       part_soal: {
         type: Sequelize.ENUM,
-        values: ["RESPONSES", "CONVERSATION", "MINI TALKS", "READING SECTION"],
+        values: [
+          "RESPONSES",
+          "CONVERSATION",
+          "LONG CONVERSATION",
+          "MINI TALKS",
+          "READING SECTION",
+          "ANALOGY",
+          "LOGICAL REASONING",
+          "ANALITICAL REASONING",
+          "ARITMETIC",
+          "NUMBER SERIES",
+          "WORD PORBLEM",
+          "FIGUR ANALYSIS AND SYNTHESIS",
+          "SPATIAL REASONING",
+        ],
         allowNull: false,
       },
       durasi: {

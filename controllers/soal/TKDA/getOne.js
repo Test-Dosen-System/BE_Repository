@@ -28,6 +28,7 @@ module.exports = {
       const responseData = {
         id: data.id,
         soal: data.soal,
+        files: data.files,
         jawaban_a: data.jawaban_a,
         jawaban_b: data.jawaban_b,
         jawaban_c: data.jawaban_c,

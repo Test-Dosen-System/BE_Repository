@@ -1,10 +1,13 @@
-const { Soal } = require("../../../models");
+const { Soal, Groupsoal } = require("../../../models");
 
 module.exports = {
   getOne: async (req, res, next) => {
     try {
       const { id } = req.params;
-      const data = await Soal.findOne({ where: { id } });
+      const data = await Soal.findOne({
+        where: { id },
+        include: [{ model: Groupsoal, as: "soalpanjang" }],
+      });
 
       if (!data) {
         return res.status(404).json({
@@ -12,6 +15,14 @@ module.exports = {
           message: "data not found",
         });
       }
+
+      const groupSoalData = data.Groupsoal
+        ? {
+            soal_panjang: data.Groupsoal.soal_panjang,
+            files: data.Groupsoal.files,
+            files2: data.Groupsoal.files2,
+          }
+        : null;
 
       let jawaban_benar_option = "";
 
@@ -28,6 +39,7 @@ module.exports = {
       const responseData = {
         id: data.id,
         soal: data.soal,
+        files: data.files,
         jawaban_a: data.jawaban_a,
         jawaban_b: data.jawaban_b,
         jawaban_c: data.jawaban_c,
@@ -38,6 +50,7 @@ module.exports = {
         jenis_soal: data.jenis_soal,
         part_soal: data.part_soal,
         durasi: data.durasi,
+        soal_panjang: groupSoalData,
       };
 
       return res.status(200).json({

@@ -29,6 +29,7 @@ module.exports = {
         return {
           id: item.id,
           soal: item.soal,
+          files: item.files,
           jawaban_a: item.jawaban_a,
           jawaban_b: item.jawaban_b,
           jawaban_c: item.jawaban_c,
