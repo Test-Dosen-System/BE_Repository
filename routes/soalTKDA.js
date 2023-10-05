@@ -18,6 +18,7 @@ router.post(
   ]),
   csoal.create.createSoalGambar
 );
+router.post("/create-soal-teks", mid.mustAdmin, csoal.create.createSoalTeks);
 router.get("/", csoal.getAll.getAll);
 router.get("/:id", csoal.getOne.getOne);
 router.delete("/delete/:id", mid.mustAdmin, csoal.destroy.delete);

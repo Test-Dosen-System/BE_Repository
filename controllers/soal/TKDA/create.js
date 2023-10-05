@@ -26,7 +26,14 @@ module.exports = {
         user_id = verify.id,
       } = req.body;
 
-      const findSoal = await Soal.findOne({ where: { soal } });
+      // const findSoal = await Soal.findOne({ where: { soal } });
+
+      // if (!findSoal) {
+      //   return res.status(409).json({
+      //     status: false,
+      //     message: "soal already exist",
+      //   });
+      // }
 
       const rightAnswer = `jawaban_${jawaban_benar}`;
 

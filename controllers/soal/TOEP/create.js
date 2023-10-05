@@ -85,18 +85,10 @@ module.exports = {
         user_id = verify.id,
       } = req.body;
 
-      const fileSoal = req.file;
-
-      const fileName = fileSoal.path.split("\\").pop().split("/").pop();
-      const resultFileName = `http://${req.get(
-        "host"
-      )}/public/images/${fileName}`;
-
       const rightAnswer = `jawaban_${jawaban_benar}`;
 
       const created = await Soal.create({
         soal,
-        files: resultFileName,
         jawaban_a,
         jawaban_b,
         jawaban_c,

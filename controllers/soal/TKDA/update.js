@@ -7,38 +7,6 @@ const { JWT_SECRET } = process.env;
 module.exports = {
   updateSoal: async (req, res, next) => {
     try {
-      const schema = {
-        soal: "string",
-        jawaban_a: "string",
-        jawaban_b: "string",
-        jawaban_c: "string",
-        jawaban_d: "string",
-        jawaban_e: "string|optional",
-        jawaban_benar: "string",
-        skor: "integer",
-        part_soal: {
-          type: "enum",
-          values: [
-            "ANALOGY",
-            "LOGICAL REASONING",
-            "ANALITICAL REASONING",
-            "ARITMETIC",
-            "NUMBER SERIES",
-            "WORD PORBLEM",
-            "FIGUR ANALYSIS AND SYNTHESIS",
-            "SPATIAL REASONING",
-          ],
-        },
-        durasi: "integer",
-      };
-
-      const validate = v.validate(req.body, schema);
-      if (validate.length) {
-        return res.status(400).json({
-          status: false,
-          message: "validasi salah!",
-        });
-      }
 
       const token = req.headers["authorization"].split("Bearer ")[1];
       const verify = jwt.verify(token, JWT_SECRET);

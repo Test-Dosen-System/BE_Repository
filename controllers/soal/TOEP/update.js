@@ -17,7 +17,6 @@ module.exports = {
         jawaban_b,
         jawaban_c,
         jawaban_d,
-        jawaban_e,
         jawaban_benar,
         skor,
         kategori_soal = "TOEP",
@@ -29,12 +28,21 @@ module.exports = {
 
       const exist = await Soal.findOne({ where: { soal } });
 
-      if (!exist) {
-        return res.status(404).json({
-          status: false,
-          message: "data not found",
-        });
-      }
+      // if (!exist) {
+      //   return res.status(404).json({
+      //     status: false,
+      //     message: "data not found",
+      //   });
+      // }
+
+      const fileSoal = req.file;
+
+      const fileName = fileSoal.path.split("\\").pop().split("/").pop();
+      const resultFileName = `http://${req.get(
+        "host"
+      )}/public/images/${fileName}`;
+
+      const rightAnswer = `jawaban_${jawaban_benar}`;
 
       const updated = await Soal.update(
         {
@@ -43,8 +51,8 @@ module.exports = {
           jawaban_b,
           jawaban_c,
           jawaban_d,
-          jawaban_e,
-          jawaban_benar,
+          jawaban_benar: rightAnswer,
+          files: resultFileName,
           skor,
           kategori_soal,
           jenis_soal,

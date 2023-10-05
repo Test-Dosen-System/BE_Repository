@@ -34,6 +34,14 @@ module.exports = {
         "host"
       )}/public/images/${fileName2}`;
 
+      if (!fileName1) {
+        resultFileName1 = null;
+      }
+
+      if (!fileName2) {
+        resultFileName2 = null;
+      }
+
       const created = await Groupsoal.create({
         soal_panjang,
         files: resultFileName1,
