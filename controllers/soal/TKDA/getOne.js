@@ -39,6 +39,9 @@ module.exports = {
         jenis_soal: data.jenis_soal,
         part_soal: data.part_soal,
         durasi: data.durasi,
+        soal_panjang: data.soalpanjang.soal_panjang,
+        files_group: data.soalpanjang.files,
+        files_group2: data.soalpanjang.files2,
       };
 
       return res.status(200).json({

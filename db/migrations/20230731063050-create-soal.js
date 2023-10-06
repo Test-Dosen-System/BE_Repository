@@ -13,7 +13,7 @@ module.exports = {
         allowNull: false,
       },
       id_soal_panjang: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         allowNull: true,
       },
       jawaban_a: {

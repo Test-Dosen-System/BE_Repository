@@ -17,6 +17,7 @@ module.exports = {
         status: true,
         message: "get data successful",
         data: {
+          id: data.id,
           soal_panjang: data.soal_panjang,
           files: data.files,
           files2: data.files2,

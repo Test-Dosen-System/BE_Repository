@@ -40,6 +40,9 @@ module.exports = {
           jenis_soal: item.jenis_soal,
           part_soal: item.part_soal,
           durasi: item.durasi,
+          soal_panjang: data.soalpanjang.soal_panjang,
+          files_group: data.soalpanjang.files,
+          files_group2: data.soalpanjang.files2,
         };
       });
 

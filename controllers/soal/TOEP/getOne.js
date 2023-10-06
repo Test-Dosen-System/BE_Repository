@@ -16,14 +16,6 @@ module.exports = {
         });
       }
 
-      const groupSoalData = data.Groupsoal
-        ? {
-            soal_panjang: data.Groupsoal.soal_panjang,
-            files: data.Groupsoal.files,
-            files2: data.Groupsoal.files2,
-          }
-        : null;
-
       let jawaban_benar_option = "";
 
       if (data.jawaban_benar === "jawaban_a") {
@@ -50,7 +42,9 @@ module.exports = {
         jenis_soal: data.jenis_soal,
         part_soal: data.part_soal,
         durasi: data.durasi,
-        soal_panjang: groupSoalData,
+        soal_panjang: data.soalpanjang.soal_panjang,
+        files_group: data.soalpanjang.files,
+        files_group2: data.soalpanjang.files2,
       };
 
       return res.status(200).json({
