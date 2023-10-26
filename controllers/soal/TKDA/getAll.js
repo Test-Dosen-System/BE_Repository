@@ -3,7 +3,7 @@ const { Soal } = require("../../../models");
 module.exports = {
   getAll: async (req, res, next) => {
     try {
-      const { kategori_soal = "TKDA", part_soal = "DUMMY ANALOGY" } = req.query;
+      const { kategori_soal = "TKDA", part_soal = "ANALOGY" } = req.query;
       const data = await Soal.findAll({ where: { kategori_soal, part_soal } });
 
       if (!data) {
@@ -40,9 +40,9 @@ module.exports = {
           jenis_soal: item.jenis_soal,
           part_soal: item.part_soal,
           durasi: item.durasi,
-          soal_panjang: data.soalpanjang.soal_panjang,
-          files_group: data.soalpanjang.files,
-          files_group2: data.soalpanjang.files2,
+          // soal_panjang: data.soalpanjang.soal_panjang,
+          // files_group: data.soalpanjang.files,
+          // files_group2: data.soalpanjang.files2,
         };
       });
 

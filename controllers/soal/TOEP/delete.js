@@ -13,12 +13,7 @@ module.exports = {
         });
       }
 
-      const deleted = await Soal.destroy(
-        {
-          id,
-        },
-        { where: { id } }
-      );
+      const deleted = await Soal.destroy({ where: { id } });
 
       return res.status(200).json({
         status: true,
