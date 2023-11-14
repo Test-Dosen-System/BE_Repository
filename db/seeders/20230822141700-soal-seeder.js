@@ -11,7 +11,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
      */
-    await queryInterface.bulkInsert("soals", [
+    await queryInterface.bulkInsert("Soals", [
       {
         soal: "what does www stand for?",
         jawaban_a: "wo wo wo",
@@ -25,6 +25,8 @@ module.exports = {
         part_soal: "READING SECTION",
         durasi: 10,
         user_id: 1,
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
     ]);
   },
@@ -36,6 +38,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete("soals", null, {});
+    await queryInterface.bulkDelete("Soals", null, {});
   },
 };

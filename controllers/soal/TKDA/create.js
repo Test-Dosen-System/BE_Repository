@@ -2,6 +2,7 @@ const { Soal } = require("../../../models");
 const validator = require("fastest-validator");
 const v = new validator();
 const jwt = require("jsonwebtoken");
+const imagekit = require("../../../utils/media-handling/image-kit");
 const { JWT_SECRET } = process.env;
 
 module.exports = {
@@ -25,15 +26,6 @@ module.exports = {
         durasi,
         user_id = verify.id,
       } = req.body;
-
-      // const findSoal = await Soal.findOne({ where: { soal } });
-
-      // if (!findSoal) {
-      //   return res.status(409).json({
-      //     status: false,
-      //     message: "soal already exist",
-      //   });
-      // }
 
       const rightAnswer = `jawaban_${jawaban_benar}`;
 
@@ -63,33 +55,6 @@ module.exports = {
   },
   createSoalGambar: async (req, res, next) => {
     try {
-      // const schema = {
-      //   soal: "string|optional",
-      //   jawaban_benar: "string",
-      //   skor: { type: "number", convert: true },
-      //   part_soal: {
-      //     type: "enum",
-      //     values: [
-      //       "ANALOGY",
-      //       "LOGICAL REASONING",
-      //       "ANALITICAL REASONING",
-      //       "DUMMY ARITMETIC",
-      //       "DUMMY NUMBER SERIES",
-      //       "WORD PORBLEM",
-      //       "FIGUR ANALYSIS AND SYNTHESIS",
-      //     ],
-      //   },
-      //   durasi: { type: "number", convert: true },
-      // };
-
-      // const validate = v.validate(req.body, schema);
-
-      // if (validate.length) {
-      //   return res.status(400).json({
-      //     status: false,
-      //     message: "validasi salah!",
-      //   });
-      // }
 
       const token = req.headers.authorization.split("Bearer ")[1];
 
@@ -112,40 +77,106 @@ module.exports = {
       const fileJawabanC = req.files["fileJawabanC"];
       const fileJawabanD = req.files["fileJawabanD"];
 
-      const fileName1 = fileSoal[0].path.split("\\").pop().split("/").pop();
-      const resultFileName1 = `http://${req.get(
-        "host"
-      )}/public/images/${fileName1}`;
+      if (
+        !fileSoal ||
+        !fileJawabanA ||
+        !fileJawabanB ||
+        !fileJawabanC ||
+        !fileJawabanD
+      ) {
+        return res.status(400).json({
+          status: false,
+          message: "file not found",
+          data: null,
+        });
+      }
 
-      const fileName2 = fileJawabanA[0].path.split("\\").pop().split("/").pop();
-      const resultFileName2 = `http://${req.get(
-        "host"
-      )}/public/images/${fileName2}`;
+      const uploadFileSoal = fileSoal.map(async (file) => {
+        try {
+          const result = await imagekit.upload({
+            file: file.buffer,
+            fileName: file.originalname,
+            useUniqueFileName: false,
+          });
+          return result;
+        } catch (error) {
+          throw error;
+        }
+      });
 
-      const fileName3 = fileJawabanB[0].path.split("\\").pop().split("/").pop();
-      const resultFileName3 = `http://${req.get(
-        "host"
-      )}/public/images/${fileName3}`;
+      const uploadFileJawabanA = fileJawabanA.map(async (file) => {
+        try {
+          const result = await imagekit.upload({
+            file: file.buffer,
+            fileName: file.originalname,
+            useUniqueFileName: false,
+          });
+          return result;
+        } catch (error) {
+          throw error;
+        }
+      });
 
-      const fileName4 = fileJawabanC[0].path.split("\\").pop().split("/").pop();
-      const resultFileName4 = `http://${req.get(
-        "host"
-      )}/public/images/${fileName4}`;
+      const uploadFileJawabanB = fileJawabanB.map(async (file) => {
+        try {
+          const result = await imagekit.upload({
+            file: file.buffer,
+            fileName: file.originalname,
+            useUniqueFileName: false,
+          });
+          return result;
+        } catch (error) {
+          throw error;
+        }
+      });
 
-      const fileName5 = fileJawabanD[0].path.split("\\").pop().split("/").pop();
-      const resultFileName5 = `http://${req.get(
-        "host"
-      )}/public/images/${fileName5}`;
+      const uploadFileJawabanC = fileJawabanC.map(async (file) => {
+        try {
+          const result = await imagekit.upload({
+            file: file.buffer,
+            fileName: file.originalname,
+            useUniqueFileName: false,
+          });
+          return result;
+        } catch (error) {
+          throw error;
+        }
+      });
+
+      const uploadFileJawabanD = fileJawabanD.map(async (file) => {
+        try {
+          const result = await imagekit.upload({
+            file: file.buffer,
+            fileName: file.originalname,
+            useUniqueFileName: false,
+          });
+          return result;
+        } catch (error) {
+          throw error;
+        }
+      });
+
+      const resultUploadFileSoal = await Promise.all(uploadFileSoal);
+      const resultUploadFileA = await Promise.all(uploadFileJawabanA);
+      const resultUploadFileB = await Promise.all(uploadFileJawabanB);
+      const resultUploadFileC = await Promise.all(uploadFileJawabanC);
+      const resultUploadFileD = await Promise.all(uploadFileJawabanD);
+      console.log(resultUploadFileA[0].url);
+      console.log(resultUploadFileSoal[0].url);
+      console.log(resultUploadFileB[0].url);
+      console.log(resultUploadFileC[0].url);
+      console.log(resultUploadFileD[0].url);
 
       const rightAnswer = `jawaban_${jawaban_benar}`;
+      console.log(rightAnswer);
 
       const created = await Soal.create({
         soal,
-        files: resultFileName1,
-        jawaban_a: resultFileName2,
-        jawaban_b: resultFileName3,
-        jawaban_c: resultFileName4,
-        jawaban_d: resultFileName5,
+        files: resultUploadFileSoal[0].url,
+        jawaban_a: resultUploadFileA[0].url,
+        jawaban_b: resultUploadFileB[0].url,
+        jawaban_c: resultUploadFileC[0].url,
+        jawaban_d: resultUploadFileD[0].url,
         jawaban_benar: rightAnswer,
         skor,
         kategori_soal,
@@ -154,7 +185,6 @@ module.exports = {
         durasi,
         user_id,
       });
-
       return res.status(201).json({
         status: true,
         message: "create soal successful",

@@ -3,24 +3,25 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const validator = require("fastest-validator");
 const v = new validator();
+const { QueryTypes } = require("sequelize");
 const { JWT_SECRET } = process.env;
 
 module.exports = {
   login: async (req, res, next) => {
     try {
-      const schema = {
-        username: "string|empty:false",
-        password: "string|min:6",
-      };
+      // const schema = {
+      //   username: "string|empty:false",
+      //   password: "string|min:6",
+      // };
 
-      const validate = v.validate(req.body, schema);
+      // const validate = v.validate(req.body, schema);
 
-      if (validate.length) {
-        return res.status(400).json({
-          status: false,
-          message: "password harus 6 karakter",
-        });
-      }
+      // if (validate.length) {
+      //   return res.status(400).json({
+      //     status: false,
+      //     message: "password harus 6 karakter",
+      //   });
+      // }
 
       const { username, password } = req.body;
 
