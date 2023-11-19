@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Port yang akan diexpose oleh aplikasi
-EXPOSE 3000
+EXPOSE 1242
 
 # Perintah untuk menjalankan aplikasi
 CMD ["./node_modules/.bin/nodemon", "app.js"]
