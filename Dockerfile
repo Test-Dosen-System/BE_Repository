@@ -1,5 +1,5 @@
 # Gunakan image Node.js versi 18.17.0 sebagai dasar
-FROM node:18.18-alpine3.18
+FROM node:20.10-alpine3.18
 
 # Set direktori kerja di dalam container
 WORKDIR /app
