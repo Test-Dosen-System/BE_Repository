@@ -58,7 +58,7 @@ module.exports = {
   getAllv2: async (req, res, next) => {
     try {
       const { kategori_soal = "TKDA" } = req.query;
-      const data = await Soal.findAll({ where: { kategori_soal, part_soal } });
+      const data = await Soal.findAll({ where: { kategori_soal } });
 
       if (!data) {
         return res.status(404).json({
