@@ -19,7 +19,7 @@ router.put(
   uploadAudio.single("fileSoal"),
   csoal.update.updateSoal
 );
-router.get("/:id", csoal.getOne.getOne);
+// router.get("/:id", csoal.getOne.getOne);
 router.get("/", csoal.getAll.getAll);
 router.get("/all", csoal.getAll.getAllv2);
 router.delete("/delete/:id", mid.mustAdmin, csoal.destroy.delete);
