@@ -37,6 +37,7 @@ module.exports = {
         5: "jawaban_c",
         6: "jawaban_d",
         7: "jawaban_benar",
+        8: ""
       };
 
       // Loop through each row within the range
