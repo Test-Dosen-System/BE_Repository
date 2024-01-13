@@ -37,7 +37,11 @@ module.exports = {
         5: "jawaban_c",
         6: "jawaban_d",
         7: "jawaban_benar",
-        8: ""
+        8: "skor",
+        9: "durasi",
+        10: "jenis_soal",
+        11: "part_soal",
+        12: "user_id",
       };
 
       // Loop through each row within the range
@@ -64,7 +68,7 @@ module.exports = {
       return res.status(201).json({
         status: true,
         message: "create data successful",
-        data: created,
+        data: created, //created,
       });
     } catch (error) {
       next(error);
