@@ -5,13 +5,7 @@ module.exports = {
   upload: async (req, res, next) => {
     try {
       const file = req.file;
-      const {
-        startCell,
-        endCell,
-        kategori_soal,
-        noSheet,
-        jenis_soal = "TOEP",
-      } = req.body;
+      const { startCell, endCell, noSheet } = req.body;
 
       if (!file) {
         return res.status(404).send({
@@ -38,16 +32,17 @@ module.exports = {
         6: "jawaban_d",
         7: "jawaban_benar",
         8: "skor",
-        9: "durasi",
+        9: "kategori_soal",
         10: "jenis_soal",
         11: "part_soal",
-        12: "user_id",
+        12: "durasi",
+        13: "files",
+        14: "user_id",
       };
 
       // Loop through each row within the range
       for (let row = range.s.r; row <= range.e.r; row++) {
         let rowData = {};
-        console.log(rowData);
 
         // Loop through each column within range
         for (let col = range.s.c; col <= range.e.c; col++) {
