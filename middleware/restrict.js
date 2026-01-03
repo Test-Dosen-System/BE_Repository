@@ -4,11 +4,20 @@ const { JWT_SECRET } = process.env;
 module.exports = {
   mustLogin: (req, res, next) => {
     try {
-      const token = req.headers["authorization"].split("Bearer ")[1];
+      const authHeader = req.headers["authorization"];
+      if (!authHeader) {
+        return res.status(401).json({
+          status: false,
+          message: "authorization header missing!",
+          data: null,
+        });
+      }
+
+      const token = authHeader.split("Bearer ")[1];
       if (!token) {
         return res.status(401).json({
           status: false,
-          message: "you're not authorized!",
+          message: "token missing!",
           data: null,
         });
       }
@@ -32,11 +41,20 @@ module.exports = {
 
   mustAdmin: (req, res, next) => {
     try {
-      const token = req.headers["authorization"].split("Bearer ")[1];
+      const authHeader = req.headers["authorization"];
+      if (!authHeader) {
+        return res.status(401).json({
+          status: false,
+          message: "authorization header missing!",
+          data: null,
+        });
+      }
+
+      const token = authHeader.split("Bearer ")[1];
       if (!token) {
         return res.status(401).json({
           status: false,
-          message: "You're not authorized!",
+          message: "token missing!",
           data: null,
         });
       }

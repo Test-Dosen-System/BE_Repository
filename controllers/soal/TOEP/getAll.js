@@ -1,10 +1,14 @@
-const { Soal } = require("../../../models");
+const { Soal, sequelize } = require("../../../models");
 
 module.exports = {
   getAll: async (req, res, next) => {
     try {
       const { kategori_soal = "TOEP", part_soal = "CONVERSATION" } = req.query;
-      const data = await Soal.findAll({ where: { kategori_soal, part_soal } });
+      const data = await Soal.findAll({
+        where: { kategori_soal, part_soal },
+        order: sequelize.literal("RANDOM()"),
+        limit: 50,
+      });
 
       if (!data) {
         return res.status(404).json({
@@ -58,7 +62,11 @@ module.exports = {
   getAllv2: async (req, res, next) => {
     try {
       const { kategori_soal = "TOEP" } = req.query;
-      const data = await Soal.findAll({ where: { kategori_soal } });
+      const data = await Soal.findAll({
+        where: { kategori_soal },
+        order: sequelize.literal("RANDOM()"),
+        limit: 50,
+      });
 
       if (!data) {
         return res.status(404).json({
