@@ -85,4 +85,52 @@ module.exports = {
       next(error);
     }
   },
+  updateProfile: async (req, res, next) => {
+    try {
+      const token = req.headers.authorization.split("Bearer ")[1];
+      const verify = jwt.verify(token, JWT_SECRET);
+      
+      const { name, email, password } = req.body;
+      const id = verify.id;
+
+      const customer = await Customer.findByPk(id);
+
+      if (!customer) {
+        return res.status(404).json({
+          status: false,
+          message: "customer not found",
+        });
+      }
+
+      const updateData = {};
+      if (name) updateData.name = name;
+      if (email) updateData.email = email;
+      
+      if (password) {
+        const encryptedPassword = await bcrypt.hash(password, 10);
+        updateData.password = encryptedPassword;
+      }
+      
+      if (Object.keys(updateData).length === 0) {
+         return res.status(400).json({ status: false, message: "No data to update" });
+      }
+
+      await Customer.update(updateData, { where: { id } });
+
+      const updatedCustomer = await Customer.findByPk(id);
+
+      return res.status(200).json({
+        status: true,
+        message: "profile updated successfully",
+        data: {
+            id: updatedCustomer.id,
+            name: updatedCustomer.name,
+            email: updatedCustomer.email,
+            username: updatedCustomer.username
+        },
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
 };
